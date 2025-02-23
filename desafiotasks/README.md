@@ -40,32 +40,27 @@ Um sistema para gerenciamento de tarefas, construído com Laravel 10 e Vue.js 3,
 - Docker Compose
 - Git
 
-## 🚀 Como Rodar o Projeto
+## 🚀 Instalação e Execução
+Pré-requisitos
+
+Docker e Docker Compose instalados
+
+Make (opcional para facilitar os comandos)
 
 1. Clone o repositório:
 ```bash
-git clone <seu-repositorio>
+git clone https://github.com/laraemi/desafio-tasks.git
 cd desafio-tasks
 ```
-
 2. Configure as variáveis de ambiente:
-```bash
-cp backend/.env.example backend/.env
-```
 
-3. Inicie os containers:
-```bash
-docker compose up -d
-```
+Copie os arquivos .env.example tanto no backend quanto no frontend e renomeie para .env.
 
-4. Instale as dependências e execute as migrações:
-```bash
-docker compose exec app composer install
-docker compose exec app php artisan migrate
-docker compose exec app php artisan key:generate
-```
+3. Execute os contêineres com Docker Compose:
 
-5. Acesse a aplicação:
+docker-compose up -d
+
+4. Acesse a aplicação:
 - Frontend: http://localhost:3000
 - Backend: http://localhost:8000
 - API: http://localhost:8000/api
@@ -114,6 +109,19 @@ Authorization: Bearer <seu-token>
 - Filtros e Ordenação
 - Temas Light/Dark
 - Responsividade
+## 🖼️ Imagens do Projeto
+
+### 1. Tela de Login
+![Login](docs/imagens/login.png)
+
+### 2. Lista de Tarefas
+![Lista de Tarefas](docs/imagens/lista.png)
+
+### 3. Edição de Tarefas
+![Editar Tarefas](docs/imagens/editar.png)
+
+### 4. Deletar Tarefas
+![Deletar Tarefas](docs/imagens/deletar.png)
 
 ## 📁 Estrutura do Projeto
 ```
@@ -124,13 +132,15 @@ desafio-tasks/
 │   ├── database/
 │   ├── routes/
 │   └── tests/
-├── frontend/             # Aplicação Vue.js
+├── frontend/              # Aplicação Vue.js
 │   ├── src/
 │   ├── public/
 │   └── components/
-├── docker/              # Configurações Docker
+├── docker/                # Configurações Docker
 │   ├── nginx/
 │   └── php/
+├── docs/                  # Documentação e Imagens
+│   └── imagens/           
 └── docker-compose.yml
 ```
 
@@ -184,14 +194,6 @@ O sistema foi otimizado para:
 - Rate limiting
 - Validação de dados
 - Proteção contra XSS
-
-## 🤝 Contribuindo
-
-1. Faça o fork do projeto
-2. Crie sua feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
 
 ## 📝 Licença
 
