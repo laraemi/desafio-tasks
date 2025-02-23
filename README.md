@@ -40,27 +40,51 @@ Um sistema para gerenciamento de tarefas, construído com Laravel 10 e Vue.js 3,
 - Docker Compose
 - Git
 
-## 🚀 Instalação e Execução
-Pré-requisitos
+## 🚀 Instalação com Docker
 
-Docker e Docker Compose instalados
+### Pré-requisitos
+- Docker (versão 20.10 ou superior)
+- Docker Compose (versão 2.0 ou superior)
+- Git
 
-Make (opcional para facilitar os comandos)
+### Passo a passo
 
 1. Clone o repositório:
 ```bash
 git clone https://github.com/laraemi/desafio-tasks.git
 cd desafio-tasks
 ```
+
 2. Configure as variáveis de ambiente:
+```bash
+# Configure o backend
+cp backend/.env.example backend/.env
 
-Copie os arquivos .env.example tanto no backend quanto no frontend e renomeie para .env.
+# Configure o frontend
+cp frontend/.env.example frontend/.env
+```
 
-3. Execute os contêineres com Docker Compose:
-
+3. Inicie os containers:
+```bash
 docker-compose up -d
+```
 
-4. Acesse a aplicação:
+4. Execute as configurações iniciais:
+```bash
+# Instalar dependências do backend
+docker-compose exec app composer install
+
+# Executar migrations
+docker-compose exec app php artisan migrate
+
+# Gerar chave da aplicação
+docker-compose exec app php artisan key:generate
+
+# Instalar dependências do frontend
+docker-compose exec frontend npm install
+```
+
+5. Acesse a aplicação:
 - Frontend: http://localhost:3000
 - Backend: http://localhost:8000
 - API: http://localhost:8000/api
@@ -93,7 +117,7 @@ docker-compose up -d
 O sistema utiliza JWT (JSON Web Tokens) para autenticação. Para fazer requisições autenticadas, inclua o token no header:
 
 ```
-Authorization: Bearer <seu-token>
+Authorization: Bearer <insira otoken aqui>
 ```
 
 ## 🎨 Interface
